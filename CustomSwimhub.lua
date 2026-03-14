@@ -2149,9 +2149,243 @@ do
         end
     end))
 end
-loadswimhubfile("chat_spam.lua")(cheat.Library, ui.box.misc:AddTab("chat spam"), function(word)
-    trident.tcp:FireServer(23, word, "Global")
-end, 25, 100)
+
+do
+    local mvb = ui.box.atvfly:AddTab('FRAllGuns')
+    mvb:AddToggle('FireRate', {Text = 'FireRate',Default = false,Callback = function(first)
+for I, V in pairs(getgc(true)) do
+    if type(V) == "table" and rawget(V, "AttackCooldown") then
+        local weaponType = V.type
+        if weaponType == "MiningDrill" or weaponType == "PipeSMG" or weaponType == "SCAR" or weaponType == "M4A1" or weaponType == "HMAR" or weaponType == "UZI" or weaponType == "C9" or weaponType == "USP9" or weaponType == "SVD"  or weaponType == "GaussRifle" or weaponType == "PipePistol" or weaponType == "PumpShotgun" or weaponType == "LeverActionRifle" or weaponType == "Blunderbuss" or weaponType == "Bow" or weaponType == "Crossbow" or weaponType == "RPG" or weaponType == "AR15" or weaponType == "Magnum"then
+            V.AttackCooldown = -math.huge
+        end
+    end
+end
+    end}):AddKeyPicker('FireRate_bind', {Default = 'None',SyncToggleState = true,Mode = 'Toggle',Text = 'FireRate',NoUI = false})
+end
+
+do
+    local mvb = ui.box.atvfly:AddTab('FRGuns')
+mvb:AddToggle('MiningDrill', {Text = 'MiningDrill', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "MiningDrill" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_MiningDrill', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('PipeSMG', {Text = 'PipeSMG', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "PipeSMG" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_PipeSMG', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('SCAR', {Text = 'SCAR', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "SCAR" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_SCAR', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('M4A1', {Text = 'M4A1', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "M4A1" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_M4A1', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('HMAR', {Text = 'HMAR', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "HMAR" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_HMAR', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('UZI', {Text = 'UZI', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "UZI" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_UZI', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('C9', {Text = 'C9', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "C9" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_C9', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('USP9', {Text = 'USP9', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "USP9" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_USP9', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('SVD', {Text = 'SVD', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "SVD" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_SVD', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('GaussRifle', {Text = 'GaussRifle', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "GaussRifle" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_GaussRifle', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('PipePistol', {Text = 'PipePistol', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "PipePistol" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_PipePistol', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('PumpShotgun', {Text = 'PumpShotgun', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "PumpShotgun" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_PumpShotgun', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('LeverActionRifle', {Text = 'LeverActionRifle', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "LeverActionRifle" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_LeverActionRifle', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('Blunderbuss', {Text = 'Blunderbuss', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "Blunderbuss" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_Blunderbuss', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('Bow', {Text = 'Bow', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "Bow" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_Bow', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('Crossbow', {Text = 'Crossbow', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "Crossbow" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_Crossbow', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('RPG', {Text = 'RPG', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "RPG" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_RPG', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('AR15', {Text = 'AR15', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "AR15" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_AR15', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+
+mvb:AddToggle('Magnum', {Text = 'Magnum', Default = false, Callback = function(first)
+    for I, V in pairs(getgc(true)) do
+        if type(V) == "table" and rawget(V, "AttackCooldown") then
+            local weaponType = V.type
+            if weaponType == "Magnum" then
+                V.AttackCooldown = -math.huge
+            end
+        end
+    end
+end}):AddKeyPicker('FireRate_bind_Magnum', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'FireRate', NoUI = false})
+end
+
+local mvb = ui.box.misc:AddTab("ZoneEsp")
+mvb:AddToggle('SafeZESP', {Text = 'SafeZESP', Default = false, Callback = function(first)
+game:GetService("Workspace").World.Zones.SafeZones["SAFEZONE_Town"].Transparency = 0.97
+end}):AddKeyPicker('SafeZESP_bind', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'SafeZESP', NoUI = 
+true})
+
+mvb:AddToggle('OffsaveZone', {Text = 'OffsaveZone', Default = false, Callback = function(first)
+game:GetService("Workspace").World.Zones.SafeZones["SAFEZONE_Town"].Transparency = 1
+end}):AddKeyPicker('offsaveZ_bind', {Default = 'None', SyncToggleState = true, Mode = 'Toggle', Text = 'offSafeZ', NoUI = false})
+
 
 ui.box.themeconfig:AddToggle('keybindshoww', {Text = 'show keybinds',Default = false,Callback = function(first)cheat.Library.KeybindFrame.Visible = first end})
 cheat.ThemeManager:SetOptionsTEMP(cheat.Options, cheat.Toggles)
