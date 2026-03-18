@@ -1,11 +1,11 @@
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "carfly"
+screenGui.Name = "dedsamodell.car fly PAID"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 screenGui.ResetOnSpawn = false
 
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 40, 0, 40)
-toggleButton.Position = UDim2.new(1, -50, 0, 10) --Rigth up corner 
+toggleButton.Position = UDim2.new(1, -50, 0, 10) -- правый верхний угол
 toggleButton.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
 toggleButton.Text = "≡"
 toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -226,7 +226,7 @@ local function createSeparator()
     return separator
 end
 
-createToggle("enableSystem", "enable fly system", false, function(state)
+createToggle("enableSystem", "Включить систему полёта", false, function(state)
     vehicleSettings.enabled = state
     if state then
         scanForVehicles()
@@ -246,13 +246,13 @@ createToggle("enableSystem", "enable fly system", false, function(state)
     end
 end)
 
-createToggle("flightActive", "active fly (B)", false, function(state)
+createToggle("flightActive", "Активировать полёт (B)", false, function(state)
     vehicleSettings.flightActive = state
 end)
 
 createSeparator()
 
-createToggle("noClip", "Active NoClip", false, function(state)
+createToggle("noClip", "Включить NoClip", false, function(state)
     vehicleSettings.noClip = state
     for _, vehicle in pairs(vehicleSettings.activeVehicles) do
         if vehicle.model then
@@ -265,17 +265,17 @@ createToggle("noClip", "Active NoClip", false, function(state)
     end
 end)
 
-createToggle("stabilize", "stabilizeCar", true, function(state)
+createToggle("stabilize", "Автовыравнивание", true, function(state)
     vehicleSettings.stabilize = state
 end)
 
 createSeparator()
 
-createSlider("speed", "fly speed", 20, 500, 100, " studs/s", function(value)
+createSlider("speed", "Скорость полёта", 20, 500, 100, " studs/s", function(value)
     vehicleSettings.speed = value
 end)
 
-createSlider("verticalSpeed", "vertical speed", 10, 100, 30, " studs/s", function(value)
+createSlider("verticalSpeed", "Вертикальная скорость", 10, 100, 30, " studs/s", function(value)
     vehicleSettings.verticalSpeed = value
 end)
 
@@ -283,7 +283,7 @@ local infoText = Instance.new("TextLabel")
 infoText.Size = UDim2.new(1, -20, 0, 30)
 infoText.Position = UDim2.new(0, 10, 1, -35)
 infoText.BackgroundTransparency = 1
-infoText.Text = "≡ button on the top right on/off"
+infoText.Text = "≡ (кнопка справа вверху) - скрыть/показать меню\nB - включить/выключить полёт"
 infoText.TextColor3 = Color3.fromRGB(180, 180, 180)
 infoText.Font = Enum.Font.SourceSans
 infoText.TextSize = 12
@@ -346,7 +346,7 @@ game:GetService("UserInputService").InputBegan:Connect(function(input, gameProce
         vehicleSettings.flightActive = not vehicleSettings.flightActive
         game.StarterGui:SetCore("SendNotification", {
             Title = "Vehicle Fly",
-            Text = "Полёт "..(vehicleSettings.flightActive and "on" or "off"),
+            Text = "Полёт "..(vehicleSettings.flightActive and "включен" or "выключен"),
             Duration = 2
         })
     end
