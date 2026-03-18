@@ -1,5 +1,5 @@
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "dedsamodell.car fly PAID"
+screenGui.Name = "carfly"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 screenGui.ResetOnSpawn = false
 
