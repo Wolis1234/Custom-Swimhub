@@ -1826,7 +1826,7 @@ do
 end
 
 do
-    local mvb = ui.box.move:AddTab('speedhack')
+    local mvb = ui.box.move:AddTab('speed')
     local bhop_enabled, bhop_silent, bhop_silent_enabled, speed = false, false, false, 55
     local downcliff_mode, downcliff_start, downcliff_speed, downcliff_accel, downcliff_fall = false, 50, 150, 50, 50
     local jetpackabuse, abuseupspeed, abusedownspeed = false, 55, 0
@@ -2058,11 +2058,17 @@ do
         bottom.CanCollide = not first
         top.CanCollide = not first
     end}):AddKeyPicker('freecam_bind', {Default = 'None',SyncToggleState = true,Mode = 'Toggle',Text = 'freecam',NoUI = false})
-    mvb:AddSlider('freecam_speed',{ Text = 'speed', Default = 10, Min = 1, Max = 300, Rounding = 0, Suffix = "sps", Compact = false }):OnChanged(function(State)
+    mvb:AddSlider('freecam_speed',{ Text = 'speed', Default = 10, Min = 1, Max = 400, Rounding = 0, Suffix = "sps", Compact = false }):OnChanged(function(State)
         speed = State
     end)
+    mvb:AddDropdown('freecam_part', {Values={"middle", "bottom", "top"},Default = 1,Multi = false,Text = 'freecam part',Callback=function(Value)
+        part = Value
+    end})
+    cheat.utility.new_heartbeat(LPH_JIT_MAX(function(delta)
         if enabled and middle then
-            middle.CFrame = pos
+            if part == "middle" then middle.CFrame = mdpos end
+            if part == "bottom" then bottom.CFrame = bmpos end
+            if part == "top" then top.CFrame = tppos end
             RunService.RenderStepped:Wait()
             if middle then
                 local cameralook = Camera.CFrame.LookVector
@@ -2075,14 +2081,20 @@ do
                     direction = direction.Unit
                 end
                 freecamoffset = freecamoffset + (direction * delta * speed)
-                middle.CFrame = pos + freecamoffset
+                if part == "middle" then middle.CFrame = mdpos + freecamoffset end
+                if part == "bottom" then bottom.CFrame = bmpos + freecamoffset end
+                if part == "top" then top.CFrame = tppos + freecamoffset end
                 middle.AssemblyLinearVelocity = Vector3.zero
+                bottom.AssemblyLinearVelocity = Vector3.zero
+                top.AssemblyLinearVelocity = Vector3.zero
             end
         elseif middle then
             freecamoffset = Vector3.zero
-            pos = middle.CFrame
+            mdpos, bmpos, tppos = middle.CFrame, bottom.CFrame, top.CFrame
         end
-    end
+    end))
+end
+
 do
     local mvb = ui.box.atvfly:AddTab('atv fly')
     local carfly_enabled, speed, accel, upspeed = false, 55, 100, 15
@@ -2116,7 +2128,7 @@ do
     local buildup = 0
     local lastdir = _Vector3new(1,0,0)
     cheat.utility.new_renderstepped(LPH_JIT_MAX(function(delta)
-        if carfly_enabled and car and car:FindFirstChild("Frame") and (car.Frame.CFrame.p - Camera.CFrame.p).Magnitude <= 5000 then
+        if carfly_enabled and car and car:FindFirstChild("Frame") and (car.Frame.CFrame.p - Camera.CFrame.p).Magnitude <= 50 then
             local cameralook = Camera.CFrame.LookVector
             cameralook = _Vector3new(cameralook.X, 0, cameralook.Z)
             local direction = Vector3.zero
@@ -2141,7 +2153,7 @@ do
                 --v.AssemblyLinearVelocity = direction * SPEED + _Vector3new(0, 0.05, 0)
                 --v.CFrame = _CFramenew(v.CFrame.Position) * CFrame.Angles(0, y+(math.pi/2), 0)
             end
-        elseif not car or car and car:FindFirstChild("Frame") and (car.Frame.CFrame.p - Camera.CFrame.p).Magnitude > 5000 then
+        elseif not car or car and car:FindFirstChild("Frame") and (car.Frame.CFrame.p - Camera.CFrame.p).Magnitude > 50 then
             findcar()
             buildup = 0
         else
@@ -2151,8 +2163,8 @@ do
 end
 
 do
-    local mvb = ui.box.atvfly:AddTab('FRAllGuns')
-    mvb:AddToggle('FireRate', {Text = 'FireRate',Default = false,Callback = function(first)
+    local mvb = ui.box.move:AddTab('FGuns')
+    mvb:AddToggle('FireRateALL', {Text = 'FireRateALL',Default = false,Callback = function(first)
 for I, V in pairs(getgc(true)) do
     if type(V) == "table" and rawget(V, "AttackCooldown") then
         local weaponType = V.type
@@ -2165,7 +2177,7 @@ end
 end
 
 do
-    local mvb = ui.box.atvfly:AddTab('FRGuns')
+    local mvb = ui.box.move:AddTab('FRGuns')
 mvb:AddToggle('MiningDrill', {Text = 'MiningDrill', Default = false, Callback = function(first)
     for I, V in pairs(getgc(true)) do
         if type(V) == "table" and rawget(V, "AttackCooldown") then
